@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Vérification des Jours Travaillés chez PixelBay</title>
+</head>
+<body>
+    <script>
+        // Initialisation de la liste des jours fériés
+        const joursFeries2020 = 
+        ["2020-01-01", 
+         "2020-04-13", 
+         "2020-05-01",
+         "2020-05-08",
+         "2020-05-21",
+         "2020-05-31",
+         "2020-07-14",
+         "2020-08-15",
+         "2020-11-01",
+         "2020-11-11",
+         "2020-12-25"];
+        // Déclaration de la fonction jourTravaille
+ function jourTravaille(date, listeJoursFeries) {          
+    for (var i = 0; i < listeJoursFeries.length; i++){
+    // Convertir le tableau joursFeries2020 en format date en faisant le listing de toutes les dates
+    //new date() converti la date en entier
+        let jourFerries = new Date(listeJoursFeries[i]);
+
+        //comparer la date "0000-00-00" si elle est égale à la date de jourFerries, si elle est égale au jour férié alors elle retourne un jour férié
+        if (date.getTime() === jourFerries.getTime()){
+            return ("jours fériés")
+            
+        }
+    }
+        //séléction de la journée précise dans une semaine 0 = Dimanche et 6 = Samedi, cela retourne un jour compris dans un week-end
+         if (date.getUTCDay() === 0 || date.getUTCDay() === 6){
+            return ("week-end");
+            
+         } else{ //sinon cela retourne un jour de travail
+            return ("jour de travail")
+         }
+       
+    }
+        // Test de la fonction
+            console.log(jourTravaille(new Date('2020-08-17'), joursFeries2020))
+
+    </script>
+</body>
+</html>
